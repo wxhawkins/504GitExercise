@@ -1,16 +1,25 @@
-def function1(a):
-    b = dict()
-    for c in a:
-        if c not in b:
-            b[c] = 1
+def get_counts(seq):
+    """
+        Counts the number of bases in the sequence.
+    """
+
+    counts = dict()
+    for base in seq:
+        if base not in counts:
+            counts[base] = 1
         else:
-            b[c] += 1
-    return b
+            counts[base] += 1
+    return counts
 
-def function2(a):
-    print('freqs')
-    total = float(sum([a[b] for b in a.keys()]))
-    for b in a.keys():
-        print(b + ':' + str(a[b]/total))
+def print_percent(counts):
+    """
+        Converts base counts to frequencies and prints. 
+    """
 
-function2(function1('ATCTGACGCGCGCCGC'))
+    print('Frequencies:')
+
+    total = sum(counts.values())
+    for base in counts.keys():
+        print(f"{base}: {counts[base]/total}")
+
+print_percent(get_counts('ATCTGACGCGCGCCGC'))
